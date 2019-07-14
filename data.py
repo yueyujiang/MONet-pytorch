@@ -11,10 +11,7 @@ class MultiDSprites(Dataset):
     def __init__(self, root='../../../datasets/Multi-dSprites',
                  train=False, val=False, test=False):
         root = os.path.expanduser(root)
-        if train:
-            filename = 'img_color.npz'
-        else:
-            raise AssertionError
+        filename = 'img_color.npz'
         if filename.endswith('.pt'):
             self.data = torch.load(os.path.join(root, filename))
         elif filename.endswith('.npz'):
