@@ -9,7 +9,7 @@ Different lines for different samples and different columns for different slots
 
 ## Masked reconstruction mixtures
 <p align="middle">
-  <img src="https://github.com/yueyujiang/pytorch-MONet/blob/master/demo_img/masked_img.png" width="210" />
+  <img src="https://github.com/yueyujiang/pytorch-MONet/blob/master/demo_img/masked_img.png" width="240" />
 </p>
 
 ## reconstruction mixtures
