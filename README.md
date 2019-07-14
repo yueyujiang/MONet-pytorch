@@ -7,7 +7,8 @@ Unfortunately, I am not able to reproduce the result perfectly as it is in the p
 Different lines for different samples and different columns for different slots
 <p align="middle">
   <img src="https://github.com/yueyujiang/pytorch-MONet/blob/master/demo_img/mask.png" width="230" />
-</p>
+</p>  
+
 ## Masked reconstruction mixtures
 <p align="middle">
   <img src="https://github.com/yueyujiang/pytorch-MONet/blob/master/demo_img/masked_img.png" width="210" />
