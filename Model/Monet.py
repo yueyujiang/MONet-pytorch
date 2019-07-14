@@ -23,25 +23,18 @@ class monet(nn.Module):
             mask = torch.exp(logmasks[:, i, :, :].unsqueeze(1))
             if self.train:
                 loss1 += torch.sum((mask * sample - mask * recon_img) ** 2 / 0.0225)
-                # loss1 += mask * torch.exp((sample - recon_img) ** 2 / 0.0225)
                 loss2 += utils.normal_KL_div_loss(logvar, mu)
             if i == 0:
-                # loss1_l = mask * recon_img
                 loss3_l = logitrecon_mask
                 recon_images = recon_img.unsqueeze(4)
             else:
-                # loss1_l += mask * recon_img
                 loss3_l = torch.cat((loss3_l, logitrecon_mask), 1)
                 recon_images = torch.cat((recon_images, recon_img.unsqueeze(4)), 4)
             reconstruction_image += recon_img * mask
         logrecon_masks = torch.nn.functional.log_softmax(loss3_l, dim=1)
         if self.train:
             loss3 = utils.cross_entropy(logmasks, logrecon_masks)
-            # loss3 = torch.sum((logmasks - logrecon_masks) ** 2)
             loss = loss1 + 0.25 * loss2 + 0.025 * loss3
-            # loss = torch.sum(torch.log(loss1)) + 0.25 * loss2 + 0.25 * loss3
-            # loss1 = torch.sum((loss1_l - sample) ** 2 / 0.0225)
-            # loss = loss1 + 0.25 * loss2 + 0.25 * loss3
         else:
             loss = loss1 = loss2 = loss3 = 0
         if not self.train:
